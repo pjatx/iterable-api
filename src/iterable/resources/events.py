@@ -40,6 +40,15 @@ class Events(Resource):
         payload["campaignId"] = campaign_id
         payload["templateId"] = template_id
         return self.client.post(resource, data=payload)
+    
+    def track_bulk(
+        self,
+        events=None
+    ):
+        resource = "/api/events/trackBulk"
+        payload = {}
+        payload["events"] = events
+        return self.client.post(resource, data=payload)
 
     def track_in_app_click(
         self, message_id, email=None, user_id=None, button_index=None
